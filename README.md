@@ -17,6 +17,8 @@ Installer le framework Django
 
 python -m pip install Django
 
+pip install Pillow
+
 Downloader le projet  
  
 git clone https://github.com/Louis86/ecommerce.git
