@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
+from ecomapp.views import AboutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
+    path('ecomapp/',include('ecomapp.urls')),
+
     path('',include('pages.urls')),
+
+
+    path('about/', AboutView.as_view()),
 ]

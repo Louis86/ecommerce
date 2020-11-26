@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ecomapp.apps.EcomappConfig',
     'polls.apps.PollsConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
@@ -56,7 +57,11 @@ ROOT_URLCONF = 'ecommerce_django3_finale.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'ecommerce_django3_finale/templates'],
+        'DIRS': [BASE_DIR /
+                 '/ecomapp/templates/ecomapp',
+                 '/pages',
+                 'polls',
+                ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +125,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-STATICFILES_DIRS = [BASE_DIR / 'ecommerce_django3_finale/static']
