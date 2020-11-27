@@ -1,7 +1,27 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views import View
 
+
+
+class HomeView(View):
+    template_name = "ecomapp/home.html"
+
+    def get(self, request):
+        # <view logic>
+        return render(request, self.template_name)
+
+
+class AboutView(View):
+    template_name = "ecomapp/about.html"
+
+    def get(self, request):
+        # <view logic>
+        return render(request, self.template_name)
+
+
+
+"""
 class AboutView(TemplateView):
     template_name = "about.html"
 
@@ -15,3 +35,4 @@ def index(request):
 def AboutView(request):
 
     return render(request, "ecomapp/about.html")
+"""
