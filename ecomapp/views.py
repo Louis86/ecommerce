@@ -1,23 +1,67 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.views import generic
+from .models import Product
+from django.urls import reverse
 from django.shortcuts import render
-from django.views import View
+from django.template import loader
+from django.http import Http404
+from django.views.generic import ListView, DetailView,View
+from .models import Product
+
+def detail(request, slug):
+    try:
+        product = Product.objects.get(slug=slug)
+        print(product)
+    except Product.DoesNotExist:
+        raise Http404("Question does not exist")
+    return render(request, 'detail.html', {'product': product})
 
 
 
-class HomeView(View):
-    template_name = "ecomapp/home.html"
+class ProductList(ListView):
+    model = Product
+    queryset = Product.objects.all()
+    template_name = "products/product_list.html"
+    context = {
+            'products': queryset
+            }
+
 
     def get(self, request):
         # <view logic>
-        return render(request, self.template_name)
+        return render(request, self.template_name, self.context)
 
+class HomeView(generic.ListView):
+    template_name = "home.html"
+
+    products = Product.objects.all()
+    context = {
+            'products': products
+            }
+    def get(self, request):
+        # <view logic>
+        return render(request, self.template_name, self.context)
+
+
+class DetailProductView(generic.DetailView):
+    template_name = "detail.html"
+    model = Product
+
+    def get_queryset(self):
+
+        return Product.objects.filter()
 
 class AboutView(View):
-    template_name = "ecomapp/about.html"
+    template_name = "about.html"
+    products = Product.objects.all()
+    context = {
+                'products': products
+                }
 
     def get(self, request):
         # <view logic>
-        return render(request, self.template_name)
+        return render(request, self.template_name, self.context)
 
 
 

@@ -1,0 +1,24 @@
+
+{% block content %}
+<h1></h1>
+<div class="columns is-multiline">
+    {% for product in products %}
+      <div class="colum is-3">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                  <p class="title is-4"> {{ product.title}} </p>
+                  <p class="title is-4"> {{ product.price}} </p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+                  {{ product.slug}}
+             <a href="/ecomapp/{{product.slug}}/">Details</a>
+          </footer>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}
