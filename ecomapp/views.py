@@ -9,13 +9,13 @@ from django.http import Http404
 from django.views.generic import ListView, DetailView,View
 from .models import Product
 
-def detail(request, slug):
-    try:
-        product = Product.objects.get(slug=slug)
-        print(product)
-    except Product.DoesNotExist:
-        raise Http404("Question does not exist")
-    return render(request, 'detail.html', {'product': product})
+class DetailProductView(generic.DetailView):
+    template_name = "detail.html"
+
+
+    def get_queryset(self):
+
+        return Product.objects.filter()
 
 
 
@@ -32,6 +32,8 @@ class ProductList(ListView):
         # <view logic>
         return render(request, self.template_name, self.context)
 
+
+
 class HomeView(generic.ListView):
     template_name = "home.html"
 
@@ -44,26 +46,14 @@ class HomeView(generic.ListView):
         return render(request, self.template_name, self.context)
 
 
-class DetailProductView(generic.DetailView):
-    template_name = "detail.html"
-    model = Product
 
-    def get_queryset(self):
-
-        return Product.objects.filter()
 
 class AboutView(View):
     template_name = "about.html"
-    products = Product.objects.all()
-    context = {
-                'products': products
-                }
 
     def get(self, request):
         # <view logic>
-        return render(request, self.template_name, self.context)
-
-
+        return render(request, self.template_name)
 
 """
 class AboutView(TemplateView):

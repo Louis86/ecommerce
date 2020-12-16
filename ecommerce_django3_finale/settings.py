@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'authentification.apps.AuthentificationConfig',
     'ecomapp.apps.EcomappConfig',
     'polls.apps.PollsConfig',
     'pages.apps.PagesConfig',
@@ -59,6 +60,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR /
                  '/ecomapp/templates/ecomapp',
+                 '/authentification/templates',
                  '/pages',
                  'polls',
                 ],
