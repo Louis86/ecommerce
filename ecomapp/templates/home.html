@@ -1,5 +1,8 @@
 
-{% block content %}
+{% extends "ecomapp/base.html" %}
+
+
+{% block main %}
 <h1></h1>
 <div class="columns is-multiline">
     {% for product in products %}
@@ -8,8 +11,8 @@
           <div class="card-content">
             <div class="media">
               <div class="media-content">
-                  <p class="title is-4"> {{ product.title}} </p>
-                  <p class="title is-4"> {{ product.price}} </p>
+                  <p class="title is-4"> Product : {{ product.title}} </p>
+                  <p class="title is-4"> Price {{ product.price}} Euros</p>
               </div>
             </div>
           </div>

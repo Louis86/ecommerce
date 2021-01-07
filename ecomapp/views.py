@@ -55,6 +55,8 @@ class AboutView(View):
         # <view logic>
         return render(request, self.template_name)
 
+
+
 """
 class AboutView(TemplateView):
     template_name = "about.html"

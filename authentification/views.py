@@ -43,13 +43,15 @@ def login_view(request):
         if user is not None:
             login(request, user)
 
-            return HttpResponse("logged in successfully")
+            return HttpResponse("logged in successful")
 
         else:
             return HttpResponse("You entered wrong credentials.")
 
     else:
+        """
 
+         """
         return render(request, "authentification/login.html")
 
 

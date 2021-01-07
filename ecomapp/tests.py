@@ -26,5 +26,12 @@ class ProductTestCase(TestCase):
 
     def test_Product(self):
         dp1 = Product.objects.get(description="descriptions_product1")
-        #print(dp1.get_absolute_url())
         self.assertEqual(str(dp1), "product1")
+
+    def test_view_url_exists(self):
+        response = self.client.get('/ecomapp/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_exists_product(self):
+        response2 = self.client.get('/ecomapp/products/')
+        self.assertEqual(response2.status_code, 200)

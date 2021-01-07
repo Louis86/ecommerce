@@ -1,14 +1,16 @@
-{% block content %}
+
+{% extends "ecomapp/base.html" %}
+
+{% block main %}
 
 
-
-    <h1 class="title"> {{ product.title}} </h1>
-    <h2 class="subtitle"> {{ product.price}} </h2>
+    <h1 class="title"> Title {{ product.title}} </h1>
+    <h2 class="subtitle">Price {{ product.price}} </h2>
 
 
     {% if product.description %}
 
-      <p>{{ product.description}}</p>
+      <p>Description{{ product.description}}</p>
 
     {% endif %}
 
