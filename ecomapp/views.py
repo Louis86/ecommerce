@@ -6,8 +6,16 @@ from django.urls import reverse
 from django.shortcuts import render
 from django.template import loader
 from django.http import Http404
-from django.views.generic import ListView, DetailView,View
+from django.views.generic import ListView, TemplateView ,DetailView ,View
 from .models import Product
+
+class Index(TemplateView):
+    template_name = "products/index.html"
+
+    def get(self, request):
+        # <view logic>
+        return render(request, self.template_name)
+
 
 class DetailProductView(generic.DetailView):
     template_name = "detail.html"
@@ -54,6 +62,9 @@ class AboutView(View):
     def get(self, request):
         # <view logic>
         return render(request, self.template_name)
+
+
+
 
 
 
